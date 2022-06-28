@@ -13,7 +13,7 @@ const app= express();
 
 
 app.use(express.urlencoded({extended:true}));
-
+app.use(express.static('public'));
 
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 
 const RecipeRoutes=require('./routes/recipe');
-mongoose.connect(process.env.DB_URL||'mongodb://127.0.0.1:27017/Recipe', {
+mongoose.connect('mongodb://localhost:27017/Recipe', {
     useNewUrlParser: true,
    
     useUnifiedTopology: true
@@ -113,9 +113,8 @@ db.once("open", () => {
 // }).catch(function(){
 //     console.log(error)
 // });
-app.use(express.static(__dirname + "/public"));
+
 app.use('/',RecipeRoutes);
-let port=process.env.PORT||8080
-app.listen(port,()=>{
+app.listen(3030,()=>{
     console.log('Listening');
 })
