@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express=require('express');
 const path = require('path');
 const ly=require('express-ejs-layouts');
@@ -21,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'))
 
 
 const RecipeRoutes=require('./routes/recipe');
-mongoose.connect(process.env.DB_URL||'mongodb://localhost:27017/Recipe', {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
    
     useUnifiedTopology: true
