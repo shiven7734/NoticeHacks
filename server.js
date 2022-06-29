@@ -113,8 +113,8 @@ db.once("open", () => {
 // }).catch(function(){
 //     console.log(error)
 // });
-
+const port=process.env.PORT||3030
 app.use('/',RecipeRoutes);
-app.listen(3030,()=>{
+app.listen(port,()=>{
     console.log('Listening');
 })
